@@ -1,18 +1,5 @@
-import type { MetricsResponse } from "./schema";
-
-type QueryVariables = Record<string, unknown>;
-
-const endpoints = {
-  metrics({ date }: QueryVariables) {
-    return `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${date}`;
-  },
-};
-
-type Endpoint = keyof typeof endpoints;
-
-type ApiResponseMap = {
-  metrics: MetricsResponse;
-};
+import type { ApiResponseMap, Endpoint, QueryVariables } from "./schema";
+import { endpoints } from "./schema";
 
 type CallFetchOptions = RequestInit & {
   as?: "json" | "text";

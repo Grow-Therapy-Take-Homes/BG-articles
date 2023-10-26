@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.bttnGroup {
+  display: flex;
+  gap: 8px;
+}

@@ -8,9 +8,10 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "baseUrl": "src",
     "paths": {
+      "@api/*": ["api/*"],
       "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@utils/*": ["utils/*"]
     },
 
     /* Bundler mode */
