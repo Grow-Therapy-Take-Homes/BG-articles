@@ -1,3 +1,11 @@
+export function yearMonthDay(date: Date, separator = "/") {
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+
+  return `${year}${separator}${month}${separator}${day}`;
+}
+
 export function formatPageViewsDate(date: Date | string) {
   if (typeof date === "string") return date;
 
@@ -8,11 +16,7 @@ export function formatPageViewsDate(date: Date | string) {
     date = lastDataDate;
   }
 
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-
-  return `${year}/${month}/${day}`;
+  return yearMonthDay(date);
 }
 
 export function getMonthTimeframe() {
@@ -47,5 +51,9 @@ export function formatArticleTimestamp(timestamp: string) {
   const dateString = `${timestamp.slice(0, 4)}/${timestamp.slice(4, 6)}/${timestamp.slice(6, 8)}`;
   const date = new Date(dateString);
 
+  return formatDate(date);
+}
+
+export function formatDate(date: Date) {
   return date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 }

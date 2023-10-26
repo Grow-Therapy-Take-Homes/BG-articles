@@ -24,7 +24,7 @@ export default function useIconProps({
   flip = false,
   flipVertical = false,
   inline = false,
-  size = "1em",
+  size = "12px",
 }: IconProps) {
   const iconProps: SVGProps<SVGSVGElement> = {
     focusable: "false",

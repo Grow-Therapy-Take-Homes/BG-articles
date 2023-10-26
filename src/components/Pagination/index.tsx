@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 
 export type PaginationProps = {
   page: number;
+  lastPage: number;
   hasNext?: boolean;
   hasPrevious?: boolean;
   onPrevious: () => void;
@@ -14,6 +15,7 @@ export type PaginationProps = {
 
 export default function Pagination({
   page,
+  lastPage,
   hasNext,
   hasPrevious,
   onPrevious,
@@ -33,7 +35,7 @@ export default function Pagination({
           <Button
             key={value}
             active={page === value}
-            disabled={!hasNext}
+            disabled={value > lastPage}
             onClick={() => onSetPage(value)}
           >
             {value}
@@ -41,7 +43,7 @@ export default function Pagination({
         ))}
       </div>
 
-      <Button onClick={onNext}>
+      <Button disabled={!hasNext} onClick={onNext}>
         <IconChevronRight color={hasNext ? "#025B4B" : "#737680"} size={20} />
       </Button>
     </div>

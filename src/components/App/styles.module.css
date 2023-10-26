@@ -12,9 +12,10 @@
 .content {
   display: flex;
   flex-direction: column;
+  gap: 24px;
   width: 100%;
   max-width: 800px;
-  padding-top: 56px;
+  padding-top: 136px;
   padding-bottom: 80px;
 }
 
@@ -25,9 +26,14 @@
   line-height: 150%;
   letter-spacing: -0.8px;
   text-align: center;
-  margin-bottom: 40px;
+  padding-bottom: 16px;
+  margin: 0;
 }
 
 .articles {
   margin-bottom: 40px;
+}
+
+.actions {
+  margin-botom: 24px;
 }

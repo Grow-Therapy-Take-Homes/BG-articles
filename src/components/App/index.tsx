@@ -6,12 +6,15 @@ import { useAppStore } from "store";
 import ArticleList from "@components/ArticleList";
 import Navigation from "@components/Navigation";
 import Pagination from "@components/Pagination";
+import ActionBar from "@components/ActionBar";
 import styles from "./styles.module.css";
 
 export default function App() {
   const date = useAppStore((s) => s.date);
+  const limit = useAppStore((s) => s.limit);
+
   const { data, isLoading, isError } = useQuery(["top_views", date], () => getTopViews(date));
-  const { items, ...pagination } = usePagination(data?.articles);
+  const { items, ...pagination } = usePagination(data?.articles, limit);
 
   return (
     <div className={styles.app}>
@@ -19,11 +22,11 @@ export default function App() {
       <div className={styles.content}>
         <h1 className={styles.title}>Top Wikipedia articles</h1>
 
-        <div className={styles.articles}>
-          <Card>
-            <ArticleList articles={items} error={isError} loading={isLoading} />
-          </Card>
-        </div>
+        <ActionBar />
+
+        <Card>
+          <ArticleList articles={items} error={isError} loading={isLoading} />
+        </Card>
 
         <Pagination {...pagination} />
       </div>

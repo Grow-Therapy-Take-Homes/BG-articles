@@ -1,0 +1,74 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.bttn {
+  width: 100%;
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  gap: 24px;
+  border-radius: 100px;
+  background: #fff;
+  border: none;
+  transition: background 0.2s ease-in-out;
+}
+
+.bttn_active,
+bttn:hover {
+  background: rgba(245, 247, 247, 0.5);
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2px;
+}
+
+.label {
+  color: #a7aaab;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  align-self: start;
+  text-transform: uppercase;
+}
+
+.labelContainer {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.selectedDate {
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+}
+
+.select {
+  appearance: none;
+  padding: 0;
+}
+
+.menu {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  padding: 32px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.12);
+}

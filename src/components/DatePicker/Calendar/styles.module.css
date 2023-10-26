@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 375px;
+  align-items: flex-start;
+  gap: 32px;
+  flex-shrink: 0;
+}
+
+.title {
+  color: #020202;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.days {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+}
+
+.day_disabled {
+  color: #a7aaab;
+}
+
+.date {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  aspect-ratio: 1 / 1;
+  align-self: stretch;
+  color: #05090d;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  background: #ffffff;
+  transition: background 0.1s ease-in-out;
+}
+
+.date:disabled {
+  color: #a7aaab;
+}
+
+.date:hover {
+  background: rgba(245, 247, 247, 0.5);
+}
+
+.date_selected {
+  background: #b3cec9;
+  color: #025b4b;
+  cursor: not-allowed;
+  pointer-events: none;
+}
