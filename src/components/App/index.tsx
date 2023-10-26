@@ -11,7 +11,7 @@ import styles from "./styles.module.css";
 export default function App() {
   const date = useAppStore((s) => s.date);
   const { data, isLoading, isError } = useQuery(["top_views", date], () => getTopViews(date));
-  const { items, page, limit, previous, setPage, next } = usePagination(data?.articles);
+  const { items, ...pagination } = usePagination(data?.articles);
 
   return (
     <div className={styles.app}>
@@ -25,17 +25,7 @@ export default function App() {
           </Card>
         </div>
 
-        <Pagination
-          hasNext
-          hasPrevious
-          active={page}
-          limit={limit}
-          page={page}
-          range={4}
-          onNext={next}
-          onPrevious={previous}
-          onSetPage={setPage}
-        />
+        <Pagination {...pagination} />
       </div>
     </div>
   );

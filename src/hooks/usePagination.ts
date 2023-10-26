@@ -4,15 +4,15 @@ export default function usePagination<T>(entries?: T[]) {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [items, setItems] = useState(entries);
+  const total = Math.floor(items?.length || 0 / page);
 
-  const next = () => {
+  const onNext = () => {
     if (!items) return;
 
-    const totalPages = Math.floor(items.length / page);
-    setPage(page + 1 > totalPages ? page : page + 1);
+    setPage(page + 1 > total ? page : page + 1);
   };
 
-  const previous = () => {
+  const onPrevious = () => {
     if (!items) return;
 
     setPage(page - 1 < 1 ? 1 : page - 1);
@@ -32,17 +32,20 @@ export default function usePagination<T>(entries?: T[]) {
     }
   }, [entries]);
 
-  const startIdx = (page - 1) * limit;
-  const endIdx = Math.min(startIdx + limit, items?.length || 0);
-  const visibleItems = items?.slice(startIdx, endIdx) || [];
+  const startIndex = (page - 1) * limit;
+  const endIndex = Math.min(startIndex + limit, items?.length || 0);
+  const visibleItems = items?.slice(startIndex, endIndex) || [];
 
   return {
+    total,
     page,
     limit,
     items: visibleItems,
-    next,
-    previous,
-    setPage,
+    hasNext: page + 1 < total,
+    hasPrevious: page > 1,
+    onNext,
+    onPrevious,
+    onSetPage: setPage,
     onLimitChange,
   };
 }

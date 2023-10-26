@@ -5,9 +5,6 @@ import styles from "./styles.module.css";
 
 export type PaginationProps = {
   page: number;
-  limit: number;
-  active: number;
-  range: number;
   hasNext?: boolean;
   hasPrevious?: boolean;
   onPrevious: () => void;
@@ -16,27 +13,26 @@ export type PaginationProps = {
 };
 
 export default function Pagination({
-  active,
-  range,
+  page,
   hasNext,
   hasPrevious,
   onPrevious,
   onNext,
   onSetPage,
 }: PaginationProps) {
-  const bttns = new Array(range).fill(0).map((_, i) => i + 1);
+  const bttns = getBttnsRange(page);
 
   return (
     <div className={styles.container}>
       <Button disabled={!hasPrevious} onClick={onPrevious}>
-        <IconChevronLeft color="#025B4B" size={20} />
+        <IconChevronLeft color={hasPrevious ? "#025B4B" : "#737680"} size={20} />
       </Button>
 
       <div className={styles.bttnGroup}>
         {bttns.map((value) => (
           <Button
             key={value}
-            active={active === value}
+            active={page === value}
             disabled={!hasNext}
             onClick={() => onSetPage(value)}
           >
@@ -46,8 +42,18 @@ export default function Pagination({
       </div>
 
       <Button onClick={onNext}>
-        <IconChevronRight color="#025B4B" size={20} />
+        <IconChevronRight color={hasNext ? "#025B4B" : "#737680"} size={20} />
       </Button>
     </div>
   );
+}
+function getBttnsRange(page: number): number[] {
+  let end = page;
+
+  while (end % 4 !== 0) {
+    end++;
+  }
+
+  const start = Math.max(end - 3, 1);
+  return Array.from({ length: 4 }, (_, i) => start + i);
 }
