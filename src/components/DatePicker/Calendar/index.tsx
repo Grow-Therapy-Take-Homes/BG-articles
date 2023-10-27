@@ -49,14 +49,16 @@ export default function Calendar({
             <span className={cn(styles.date, styles.day_disabled)}>{day}</span>
           </div>
         ))}
+
         {days.map((day) => (
           <div key={day.date.getTime()} className={styles.day} onClick={handleSelectDay(day.date)}>
             <button
               className={cn(
                 styles.date,
-                day.date.getTime() === selected.getTime() && styles.date_selected,
+                day.date.toDateString() === selected.toDateString() && styles.date_selected,
               )}
               disabled={day.disabled || (from && day.date < from) || (to && day.date > to)}
+              type="button"
             >
               {day.date.getDate()}
             </button>

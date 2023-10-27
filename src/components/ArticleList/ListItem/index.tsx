@@ -20,7 +20,7 @@ export default function ListItem({ article }: ListItemProps) {
 
   return (
     <div className={styles.container}>
-      <button className={styles.item} onClick={handleToggleDetails}>
+      <button className={styles.item} type="button" onClick={handleToggleDetails}>
         <span>{articleTitle}</span>
         <span>{article.views} views</span>
       </button>

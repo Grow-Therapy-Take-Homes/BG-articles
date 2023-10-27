@@ -2,7 +2,7 @@ import type { FormEvent } from "react";
 import { useState } from "react";
 import SearchButton from "@components/SearchButton";
 import DatePicker from "@components/DatePicker";
-import ResultsPerPageSelect from "@components/ResultsPerPagePicker";
+import ResultsPerPagePicker from "@components/ResultsPerPagePicker";
 import { useAppStore } from "store";
 import styles from "./styles.module.css";
 import Divider from "./Divider";
@@ -29,7 +29,7 @@ export default function ActionBar() {
       <DatePicker defaultDate={date} to={lastDataDate} onSelect={setDate} />
 
       <Divider />
-      <ResultsPerPageSelect selected={limit} onSelect={setLimit} />
+      <ResultsPerPagePicker selectedValue={limit} onSelect={setLimit} />
 
       <SearchButton />
     </form>

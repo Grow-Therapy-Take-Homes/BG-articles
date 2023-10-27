@@ -8,10 +8,13 @@ export type AppState = {
   setLimit(value: number): void;
 };
 
+const lastDateOfData = new Date();
+lastDateOfData.setDate(lastDateOfData.getDate() - 2);
+
 export const useAppStore = create<AppState>()(
   devtools(
     (set) => ({
-      date: new Date(),
+      date: lastDateOfData,
       setDate(day: Date) {
         const lastDataDate = new Date();
         lastDataDate.setDate(lastDataDate.getDate() - 2);
@@ -22,7 +25,7 @@ export const useAppStore = create<AppState>()(
 
         set(() => ({ date: day }));
       },
-      limit: 100,
+      limit: 25,
       setLimit(value: number) {
         set(() => ({ limit: value }));
       },

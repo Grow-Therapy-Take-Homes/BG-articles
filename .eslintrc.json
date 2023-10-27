@@ -16,6 +16,7 @@
   },
   "plugins": ["@typescript-eslint", "react-hooks", "react", "import", "react-refresh"],
   "rules": {
+    "react/button-has-type": "error",
     "react/react-in-jsx-scope": "off",
     "react-refresh/only-export-components": ["error", { "allowConstantExport": true }],
     "react/jsx-boolean-value": "error",

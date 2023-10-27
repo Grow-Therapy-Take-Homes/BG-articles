@@ -7,12 +7,12 @@ import styles from "./styles.module.css";
 
 export type MenuButtonProps = {
   label: string;
-  selected: number | string;
+  selectedValue: number | string;
   children: NonNullable<ReactNode>;
   icon: NonNullable<ReactNode>;
 };
 
-export default function MenuButton({ label, selected, children, icon }: MenuButtonProps) {
+export default function MenuButton({ label, selectedValue, children, icon }: MenuButtonProps) {
   const [open, setOpen] = useState(false);
   const ref = useOnClickOutside<HTMLDivElement>(() => setOpen(false));
 
@@ -24,18 +24,16 @@ export default function MenuButton({ label, selected, children, icon }: MenuButt
     <div ref={ref} className={styles.container}>
       <button
         className={cn(styles.bttn, open && styles.bttn_active)}
-        id="menuButton"
+        type="button"
         onClick={handleClick}
       >
         {icon}
         <div className={styles.textContainer}>
           <div className={styles.labelContainer}>
-            <label className={styles.label} htmlFor="menuButton">
-              {label}
-            </label>
+            <span className={styles.label}>{label}</span>
             <IconChevronDown color="#A7AAAB" flipVertical={open} />
           </div>
-          <div className={styles.selectedDate}>{selected}</div>
+          <div className={styles.selectedValue}>{selectedValue}</div>
         </div>
       </button>
       {open && <div className={styles.menu}>{children}</div>}

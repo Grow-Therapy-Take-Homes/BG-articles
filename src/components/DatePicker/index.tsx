@@ -20,7 +20,7 @@ export default function DatePicker({ defaultDate, from, to, onSelect }: DatePick
   };
 
   return (
-    <MenuButton icon={<IconCalendar />} label="Date" selected={formatDate(calendar.selected)}>
+    <MenuButton icon={<IconCalendar />} label="Date" selectedValue={formatDate(calendar.selected)}>
       <Calendar {...calendar} from={from} to={to} onSelect={handleSelectDay} />
     </MenuButton>
   );

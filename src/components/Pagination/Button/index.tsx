@@ -9,7 +9,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export default function Button({ active, children, ...props }: ButtonProps) {
   return (
-    <button {...props} className={cn(styles.bttn, active && styles.bttn_active)}>
+    <button className={cn(styles.bttn, active && styles.bttn_active)} type="button" {...props}>
       {children}
     </button>
   );

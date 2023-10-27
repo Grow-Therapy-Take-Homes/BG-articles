@@ -16,7 +16,7 @@
 }
 
 .bttn_active,
-bttn:hover {
+.bttn:hover {
   background: rgba(245, 247, 247, 0.5);
 }
 
@@ -45,7 +45,7 @@ bttn:hover {
   gap: 6px;
 }
 
-.selectedDate {
+.selectedValue {
   color: #000;
   font-family: Poppins;
   font-size: 16px;
@@ -53,11 +53,6 @@ bttn:hover {
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.32px;
-}
-
-.select {
-  appearance: none;
-  padding: 0;
 }
 
 .menu {

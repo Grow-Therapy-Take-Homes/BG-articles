@@ -11,6 +11,7 @@ export default function IconButton({ children, size = 28, ...props }: IconButton
     <button
       className={styles.bttn}
       style={{ width: size, height: size, lineHeight: size }}
+      type="button"
       {...props}
     >
       {children}
