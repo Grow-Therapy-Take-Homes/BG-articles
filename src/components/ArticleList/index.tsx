@@ -18,7 +18,7 @@ export default function ArticleList({ articles, loading, error }: ArticleListPro
   return (
     <ul className={styles.list}>
       {articles?.map((item) => (
-        <li key={item.article}>
+        <li key={item.article} className={styles.item}>
           <ListItem article={item} />
         </li>
       ))}

@@ -13,16 +13,15 @@ export default function ViewStats({ articleName }: ViewStatsProps) {
   });
 
   return (
-    <div>
+    <div className={styles.container}>
+      <div className={styles.divider} />
       <div className={styles.title}>Top views this month</div>
-      <ul className={styles.list}>
-        {data?.map((item) => (
-          <li key={item.timestamp} className={styles.stat}>
-            <div>{formatArticleTimestamp(item.timestamp)}</div>
-            <div>{item.views} views</div>
-          </li>
-        ))}
-      </ul>
+      {data?.map((item) => (
+        <div key={item.timestamp} className={styles.stat}>
+          <div className={styles.date}>{formatArticleTimestamp(item.timestamp)}</div>
+          <div className={styles.views}>{item.views} views</div>
+        </div>
+      ))}
     </div>
   );
 }

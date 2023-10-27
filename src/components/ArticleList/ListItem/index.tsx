@@ -21,12 +21,13 @@ export default function ListItem({ article }: ListItemProps) {
   return (
     <div className={styles.container}>
       <button className={styles.item} type="button" onClick={handleToggleDetails}>
-        <span>{articleTitle}</span>
-        <span>{article.views} views</span>
+        <span className={styles.rank}>{article.rank}.</span>
+        <span className={styles.title}>{articleTitle}</span>
+        <span className={styles.views}>{article.views.toLocaleString()} views</span>
       </button>
 
       {showDetails && (
-        <div>
+        <div className={styles.summary}>
           <Summary articleName={article.article} />
           <ViewStats articleName={article.article} />
         </div>
