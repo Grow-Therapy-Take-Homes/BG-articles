@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
-export default function usePagination<T>(entries?: T[], limit = 10) {
+export default function usePagination<T>(entries?: T[], limit = 25) {
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(entries);
+  const [previousLimit, setPreviousLimit] = useState(limit);
   const total = entries?.length || 0;
   const startIndex = (page - 1) * limit;
   const endIndex = Math.min(startIndex + limit, items?.length || 0);
@@ -10,7 +11,7 @@ export default function usePagination<T>(entries?: T[], limit = 10) {
   const hasNext = endIndex < (items?.length || 0);
   const hasPrevious = page > 1;
   const totalPages = Math.ceil((items?.length || 0) / limit);
-  const lastPage = totalPages > 0 ? totalPages : 0;
+  const lastPage = totalPages > 0 ? totalPages : 1;
 
   const onNext = () => {
     if (!items || !hasNext) return;
@@ -29,7 +30,13 @@ export default function usePagination<T>(entries?: T[], limit = 10) {
       setItems(entries);
       setPage(1);
     }
-  }, [entries]);
+
+    if (limit !== previousLimit) {
+      const newPage = Math.ceil((page * previousLimit) / limit);
+      setPage(newPage < lastPage ? newPage : lastPage);
+      setPreviousLimit(limit);
+    }
+  }, [entries, limit]);
 
   return {
     total,

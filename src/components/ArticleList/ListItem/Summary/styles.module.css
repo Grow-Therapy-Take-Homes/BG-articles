@@ -1,9 +1,7 @@
 .extract {
+  overflow: hidden;
   padding: 0 0 0 40px;
   margin: 0;
-  height: 75px;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: #737680;
   font-family: Poppins;
   font-size: 14px;
@@ -11,5 +9,8 @@
   font-weight: 400;
   line-height: 180%;
   letter-spacing: -0.28px;
-  display: block;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }

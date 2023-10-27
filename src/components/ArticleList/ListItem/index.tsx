@@ -1,9 +1,9 @@
 import { useState } from "react";
 import type { Article } from "@api/schema";
 import formatArticleTitle from "@utils/formatArticleTitle";
-import styles from "./styles.module.css";
 import Summary from "./Summary";
 import ViewStats from "./ViewStats";
+import styles from "./styles.module.css";
 
 export type ListItemProps = {
   article: Article;
@@ -21,9 +21,9 @@ export default function ListItem({ article }: ListItemProps) {
   return (
     <div className={styles.container}>
       <button className={styles.item} type="button" onClick={handleToggleDetails}>
-        <span className={styles.rank}>{article.rank}.</span>
-        <span className={styles.title}>{articleTitle}</span>
-        <span className={styles.views}>{article.views.toLocaleString()} views</span>
+        <div className={styles.rank}>{article.rank}.</div>
+        <div className={styles.title}>{articleTitle}</div>
+        <div className={styles.views}>{article.views.toLocaleString()} views</div>
       </button>
 
       {showDetails && (
