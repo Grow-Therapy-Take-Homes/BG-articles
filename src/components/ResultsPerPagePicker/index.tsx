@@ -1,3 +1,4 @@
+import { useState } from "react";
 import IconMenu from "icons/IconMenu";
 import MenuButton from "@components/MenuButton";
 import cn from "@utils/cn";
@@ -14,12 +15,30 @@ export default function ResultsPerPagePicker({
   selectedValue,
   onSelect,
 }: ResultsPerPagePickerProps) {
-  const getHandleClick = (value: number) => () => {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const getValueHandler = (value: number) => () => {
     onSelect(value);
+    handleClose();
   };
 
   return (
-    <MenuButton icon={<IconMenu />} label="NUM RESULTS" selectedValue={selectedValue}>
+    <MenuButton
+      icon={<IconMenu />}
+      label="NUM RESULTS"
+      open={open}
+      selectedValue={selectedValue}
+      onClick={handleClick}
+      onClose={handleClose}
+    >
       <div className={styles.menu}>
         {values.map((value) => (
           <button
@@ -27,7 +46,7 @@ export default function ResultsPerPagePicker({
             className={cn(styles.bttn, selectedValue === value && styles.bttn_selected)}
             type="button"
             value={value}
-            onClick={getHandleClick(value)}
+            onClick={getValueHandler(value)}
           >
             {value}
           </button>

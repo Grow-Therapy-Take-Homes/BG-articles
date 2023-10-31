@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 320px;
 }
 
 .content {
@@ -36,4 +37,10 @@
 
 .actions {
   margin-botom: 24px;
+}
+
+@media screen and (max-width: 500px) {
+  .content {
+    padding-top: 112px;
+  }
 }

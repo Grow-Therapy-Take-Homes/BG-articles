@@ -23,3 +23,9 @@
 .bttn:hover {
   background: #02433a;
 }
+
+@media screen and (max-width: 500px) {
+  .bttn {
+    width: 100%;
+  }
+}

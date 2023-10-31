@@ -29,3 +29,16 @@
   display: flex;
   gap: 16px;
 }
+
+@media screen and (max-width: 700px) {
+  .actionbar {
+    height: initial;
+    flex-direction: column;
+    border-radius: 0;
+    gap: 24px;
+  }
+
+  .divider {
+    display: none;
+  }
+}

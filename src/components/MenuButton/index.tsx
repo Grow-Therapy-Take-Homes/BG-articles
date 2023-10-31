@@ -1,31 +1,35 @@
-import type { ReactNode } from "react";
-import { useState } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 import IconChevronDown from "icons/IconChevronDown";
 import useOnClickOutside from "@hooks/useClickOutside";
 import cn from "@utils/cn";
 import styles from "./styles.module.css";
 
-export type MenuButtonProps = {
+export type MenuButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;
   selectedValue: number | string;
   children: NonNullable<ReactNode>;
   icon: NonNullable<ReactNode>;
+  open: boolean;
+  onClose: () => void;
 };
 
-export default function MenuButton({ label, selectedValue, children, icon }: MenuButtonProps) {
-  const [open, setOpen] = useState(false);
-  const ref = useOnClickOutside<HTMLDivElement>(() => setOpen(false));
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
+export default function MenuButton({
+  label,
+  selectedValue,
+  children,
+  icon,
+  open,
+  onClose,
+  onClick,
+}: MenuButtonProps) {
+  const ref = useOnClickOutside<HTMLDivElement>(onClose);
 
   return (
     <div ref={ref} className={styles.container}>
       <button
         className={cn(styles.bttn, open && styles.bttn_active)}
         type="button"
-        onClick={handleClick}
+        onClick={onClick}
       >
         {icon}
         <div className={styles.textContainer}>
