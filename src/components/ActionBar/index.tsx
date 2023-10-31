@@ -15,9 +15,6 @@ export default function ActionBar() {
   const [date, setDate] = useState(defaultDate);
   const [limit, setLimit] = useState(defaultLimit);
 
-  const lastDataDate = new Date();
-  lastDataDate.setDate(lastDataDate.getDate() - 1);
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     applyDate(date);
@@ -26,7 +23,7 @@ export default function ActionBar() {
 
   return (
     <form className={styles.actionbar} onSubmit={handleSubmit}>
-      <DatePicker defaultDate={date} to={lastDataDate} onSelect={setDate} />
+      <DatePicker defaultDate={date} to={new Date()} onSelect={setDate} />
 
       <Divider />
       <ResultsPerPagePicker selectedValue={limit} onSelect={setLimit} />

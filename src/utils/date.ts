@@ -9,13 +9,6 @@ export function yearMonthDay(date: Date, separator = "/") {
 export function formatPageViewsDate(date: Date | string) {
   if (typeof date === "string") return date;
 
-  const lastDateOfData = new Date();
-  lastDateOfData.setDate(lastDateOfData.getDate() - 1);
-
-  if (date > lastDateOfData) {
-    date = lastDateOfData;
-  }
-
   return yearMonthDay(date);
 }
 
@@ -24,13 +17,11 @@ export function getMonthTimeframe() {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const firstDayOfMonth = new Date(year, month - 1, 1);
-  const lastDateOfData = new Date();
-  lastDateOfData.setDate(lastDateOfData.getDate() - 1);
-
+  const today = new Date();
   let lastDayOfMonth = new Date(year, month, 0);
 
-  if (lastDateOfData < lastDayOfMonth) {
-    lastDayOfMonth = lastDateOfData;
+  if (today < lastDayOfMonth) {
+    lastDayOfMonth = today;
   }
 
   const start = formatMonthStartOrEnd(firstDayOfMonth);

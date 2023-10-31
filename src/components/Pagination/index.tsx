@@ -2,8 +2,10 @@ import IconChevronRight from "icons/IconChevronRight";
 import IconChevronLeft from "icons/IconChevronLeft";
 import Button from "./Button";
 import styles from "./styles.module.css";
+import { getBttnsRange } from "./helpers";
 
 export type PaginationProps = {
+  total: number;
   page: number;
   lastPage: number;
   hasNext?: boolean;
@@ -14,6 +16,7 @@ export type PaginationProps = {
 };
 
 export default function Pagination({
+  total,
   page,
   lastPage,
   hasNext,
@@ -34,8 +37,8 @@ export default function Pagination({
         {bttns.map((value) => (
           <Button
             key={value}
-            active={page === value}
-            disabled={value > lastPage}
+            active={!!total && page === value}
+            disabled={!total || value > lastPage}
             onClick={() => onSetPage(value)}
           >
             {value}
@@ -48,14 +51,4 @@ export default function Pagination({
       </Button>
     </div>
   );
-}
-function getBttnsRange(page: number): number[] {
-  let end = page;
-
-  while (end % 4 !== 0) {
-    end++;
-  }
-
-  const start = Math.max(end - 3, 1);
-  return Array.from({ length: 4 }, (_, i) => start + i);
 }

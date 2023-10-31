@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Article } from "@api/schema";
-import formatArticleTitle from "@utils/formatArticleTitle";
+import formatArticleTitle from "../helpers";
 import Summary from "./Summary";
 import ViewStats from "./ViewStats";
 import styles from "./styles.module.css";

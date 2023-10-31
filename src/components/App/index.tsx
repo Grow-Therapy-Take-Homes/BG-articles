@@ -13,7 +13,7 @@ export default function App() {
   const date = useAppStore((s) => s.date);
   const limit = useAppStore((s) => s.limit);
 
-  const { data, isLoading, isError } = useQuery(["top_views", date], () => getTopViews(date));
+  const { data, isLoading, error } = useQuery(["top_views", date], () => getTopViews(date));
   const { items, ...pagination } = usePagination(data?.articles, limit);
 
   return (
@@ -25,7 +25,7 @@ export default function App() {
         <ActionBar />
 
         <Card>
-          <ArticleList articles={items} error={isError} loading={isLoading} />
+          <ArticleList articles={items} error={error} loading={isLoading} />
         </Card>
 
         <Pagination {...pagination} />

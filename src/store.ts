@@ -7,20 +7,16 @@ export type AppState = {
   setLimit(value: number): void;
 };
 
-const lastDateOfData = new Date();
-lastDateOfData.setDate(lastDateOfData.getDate() - 1);
+/**
+ * Data uploads can sometimes take more than 24 hours. This will help ensure that the intial
+ * page load includes data for a slightly better experience.
+ * */
+const twoDaysAgo = new Date();
+twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
 
 export const useAppStore = create<AppState>()((set) => ({
-  date: lastDateOfData,
+  date: twoDaysAgo,
   setDate(day: Date) {
-    // Recreating this each time to avoid edge cases.
-    const lastDayOfData = new Date();
-    lastDayOfData.setDate(lastDayOfData.getDate() - 1);
-
-    if (day > lastDayOfData) {
-      day = lastDayOfData;
-    }
-
     set(() => ({ date: day }));
   },
   limit: 100,
