@@ -1,5 +1,6 @@
 .navigation {
   position: fixed;
+  z-index: 2;
   height: 80px;
   padding: 16px 48px;
   width: 100%;

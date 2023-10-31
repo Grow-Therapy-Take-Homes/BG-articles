@@ -1,6 +1,6 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
-import SearchButton from "@components/SearchButton";
+import SearchButton from "@components/ActionBar/SearchButton";
 import DatePicker from "@components/DatePicker";
 import ResultsPerPagePicker from "@components/ResultsPerPagePicker";
 import { useAppStore } from "store";
