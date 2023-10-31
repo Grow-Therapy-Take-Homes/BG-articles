@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
 
 export type AppState = {
   limit: number;
@@ -9,27 +8,23 @@ export type AppState = {
 };
 
 const lastDateOfData = new Date();
-lastDateOfData.setDate(lastDateOfData.getDate() - 2);
+lastDateOfData.setDate(lastDateOfData.getDate() - 1);
 
-export const useAppStore = create<AppState>()(
-  devtools(
-    (set) => ({
-      date: lastDateOfData,
-      setDate(day: Date) {
-        const lastDataDate = new Date();
-        lastDataDate.setDate(lastDataDate.getDate() - 2);
+export const useAppStore = create<AppState>()((set) => ({
+  date: lastDateOfData,
+  setDate(day: Date) {
+    // Recreating this each time to avoid edge cases.
+    const lastDayOfData = new Date();
+    lastDayOfData.setDate(lastDayOfData.getDate() - 1);
 
-        if (day > lastDataDate) {
-          day = lastDataDate;
-        }
+    if (day > lastDayOfData) {
+      day = lastDayOfData;
+    }
 
-        set(() => ({ date: day }));
-      },
-      limit: 25,
-      setLimit(value: number) {
-        set(() => ({ limit: value }));
-      },
-    }),
-    { name: "AppStore" },
-  ),
-);
+    set(() => ({ date: day }));
+  },
+  limit: 100,
+  setLimit(value: number) {
+    set(() => ({ limit: value }));
+  },
+}));

@@ -18,8 +18,9 @@ export default function Summary({ articleName }: SummaryProps) {
     },
   );
 
-  // Not every result has a summary.
-  if (!data?.extract) return null;
-
-  return <p className={styles.extract}>{data?.extract}</p>;
+  return (
+    <p className={styles.extract}>
+      {data?.extract || data?.description || "This page does not include a summary."}
+    </p>
+  );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function usePagination<T>(entries?: T[], limit = 25) {
+export default function usePagination<T>(entries?: T[], limit = 100) {
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(entries);
   const [previousLimit, setPreviousLimit] = useState(limit);

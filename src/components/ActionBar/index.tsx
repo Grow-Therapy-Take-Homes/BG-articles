@@ -16,7 +16,7 @@ export default function ActionBar() {
   const [limit, setLimit] = useState(defaultLimit);
 
   const lastDataDate = new Date();
-  lastDataDate.setDate(lastDataDate.getDate() - 2);
+  lastDataDate.setDate(lastDataDate.getDate() - 1);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

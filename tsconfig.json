@@ -27,11 +27,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
-    "sourceMap": true,
+    "inlineSourceMap": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "esModuleInterop": true
   },
-  "include": ["src"],
+  "include": ["src", "cypress.config.ts", "cypress"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

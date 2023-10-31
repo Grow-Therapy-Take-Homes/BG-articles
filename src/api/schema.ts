@@ -1,12 +1,15 @@
 export type QueryVariables = Record<string, unknown>;
 
 export const endpoints = {
+  /** Get the top 1000 most viewed articles for a specific date in the format yyyy/mm/dd. */
   top_views({ date }: QueryVariables) {
     return `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/${date}`;
   },
+  /** Get the daily views for a specific article in a given timeframe. */
   daily_views({ article, timeframe }: QueryVariables) {
     return `https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/${article}/daily/${timeframe}`;
   },
+  /** Get the summary for a given article. */
   summary({ article }: QueryVariables) {
     return `https://en.wikipedia.org/api/rest_v1/page/summary/${article}`;
   },
@@ -53,6 +56,7 @@ export type Summary = {
   pageid: number;
   title: string;
   extract: string;
+  description: string;
 };
 
 export type MonthlyViewsResponse = {

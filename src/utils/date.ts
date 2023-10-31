@@ -9,11 +9,11 @@ export function yearMonthDay(date: Date, separator = "/") {
 export function formatPageViewsDate(date: Date | string) {
   if (typeof date === "string") return date;
 
-  const lastDataDate = new Date();
-  lastDataDate.setDate(lastDataDate.getDate() - 2);
+  const lastDateOfData = new Date();
+  lastDateOfData.setDate(lastDateOfData.getDate() - 1);
 
-  if (date > lastDataDate) {
-    date = lastDataDate;
+  if (date > lastDateOfData) {
+    date = lastDateOfData;
   }
 
   return yearMonthDay(date);
@@ -25,7 +25,7 @@ export function getMonthTimeframe() {
   const month = date.getMonth() + 1;
   const firstDayOfMonth = new Date(year, month - 1, 1);
   const lastDateOfData = new Date();
-  lastDateOfData.setDate(lastDateOfData.getDate() - 2);
+  lastDateOfData.setDate(lastDateOfData.getDate() - 1);
 
   let lastDayOfMonth = new Date(year, month, 0);
 
