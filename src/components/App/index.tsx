@@ -25,7 +25,12 @@ export default function App() {
         <ActionBar />
 
         <Card>
-          <ArticleList articles={items} error={error} loading={isLoading} />
+          <ArticleList
+            articles={items}
+            error={error}
+            limit={pagination.limit}
+            loading={isLoading}
+          />
         </Card>
 
         <Pagination {...pagination} />

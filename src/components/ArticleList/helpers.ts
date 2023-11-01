@@ -3,6 +3,7 @@ const namespaces = [
   "Project:",
   "File:",
   "MediaWiki:",
+  "Wikipedia:",
   "Template:",
   "Help:",
   "Category:",

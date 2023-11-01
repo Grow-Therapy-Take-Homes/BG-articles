@@ -1,16 +1,23 @@
 import getMonthlyViews from "@api/queries/getMonthlyViews";
-import { formatArticleTimestamp } from "@utils/date";
 import { useQuery } from "react-query";
+import { useAppStore } from "store";
 import styles from "./styles.module.css";
+import ViewStatsLoading from "./ViewStatsLoading";
+import { formatArticleTimestamp } from "./helpers";
 
 type ViewStatsProps = {
   articleName: string;
 };
 
 export default function ViewStats({ articleName }: ViewStatsProps) {
-  const { data } = useQuery(["views", articleName], () => {
-    return getMonthlyViews(articleName);
+  const date = useAppStore((s) => s.date);
+  const { data, isLoading } = useQuery(["views", articleName], () => {
+    return getMonthlyViews(articleName, date);
   });
+
+  if (isLoading) {
+    return <ViewStatsLoading />;
+  }
 
   return (
     <div className={styles.container}>

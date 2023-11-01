@@ -12,8 +12,8 @@ export function formatPageViewsDate(date: Date | string) {
   return yearMonthDay(date);
 }
 
-export function getMonthTimeframe() {
-  const date = new Date();
+/** Format a timeframe for the daily_views endpoint. */
+export function getMonthTimeframe(date = new Date()) {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const firstDayOfMonth = new Date(year, month - 1, 1);
@@ -30,19 +30,13 @@ export function getMonthTimeframe() {
   return `${start}/${end}`;
 }
 
+/** Format a start or end date for the daily_views endpoint. */
 function formatMonthStartOrEnd(date: Date) {
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const day = date.getDate().toString().padStart(2, "0");
 
   return `${year}${month}${day}`;
-}
-
-export function formatArticleTimestamp(timestamp: string) {
-  const dateString = `${timestamp.slice(0, 4)}/${timestamp.slice(4, 6)}/${timestamp.slice(6, 8)}`;
-  const date = new Date(dateString);
-
-  return formatDate(date);
 }
 
 export function formatDate(date: Date) {
