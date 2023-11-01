@@ -28,7 +28,7 @@ export default function ActionBar() {
       <Divider />
       <ResultsPerPagePicker selectedValue={limit} onSelect={setLimit} />
 
-      <Button className={styles.bttn} type="submit">
+      <Button className={styles.bttn} data-testid="search-button" type="submit">
         Search
       </Button>
     </form>

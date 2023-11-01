@@ -32,6 +32,7 @@ export default function DatePicker({ defaultDate, from, to, onSelect }: DatePick
 
   return (
     <MenuButton
+      data-testid="date-picker"
       icon={<IconCalendar />}
       label="Date"
       open={open}

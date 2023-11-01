@@ -29,7 +29,7 @@ export default function Pagination({
 
   return (
     <div className={styles.container}>
-      <Button disabled={!hasPrevious} onClick={onPrevious}>
+      <Button data-testid="previous-page" disabled={!hasPrevious} onClick={onPrevious}>
         <IconChevronLeft color={hasPrevious ? "#025B4B" : "#737680"} size={20} />
       </Button>
 
@@ -38,6 +38,7 @@ export default function Pagination({
           <Button
             key={value}
             active={!!total && page === value}
+            data-testid={`page-${value}`}
             disabled={!total || value > lastPage}
             onClick={() => onSetPage(value)}
           >
@@ -46,7 +47,7 @@ export default function Pagination({
         ))}
       </div>
 
-      <Button disabled={!hasNext} onClick={onNext}>
+      <Button data-testid="next-page" disabled={!hasNext} onClick={onNext}>
         <IconChevronRight color={hasNext ? "#025B4B" : "#737680"} size={20} />
       </Button>
     </div>

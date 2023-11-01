@@ -21,6 +21,7 @@ export default function MenuButton({
   open,
   onClose,
   onClick,
+  ...props
 }: MenuButtonProps) {
   const ref = useOnClickOutside<HTMLDivElement>(onClose);
 
@@ -30,6 +31,7 @@ export default function MenuButton({
         className={cn(styles.bttn, open && styles.bttn_active)}
         type="button"
         onClick={onClick}
+        {...props}
       >
         {icon}
         <div className={styles.textContainer}>

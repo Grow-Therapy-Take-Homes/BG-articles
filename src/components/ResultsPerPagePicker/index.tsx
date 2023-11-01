@@ -32,6 +32,7 @@ export default function ResultsPerPagePicker({
 
   return (
     <MenuButton
+      data-testid="results-per-page-picker"
       icon={<IconMenu />}
       label="NUM RESULTS"
       open={open}
@@ -43,7 +44,9 @@ export default function ResultsPerPagePicker({
         {values.map((value) => (
           <button
             key={value}
+            aria-selected={selectedValue === value}
             className={cn(styles.bttn, selectedValue === value && styles.bttn_selected)}
+            data-testid={`results-per-page-option-${value}`}
             type="button"
             value={value}
             onClick={getValueHandler(value)}

@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 
 export default function ListItemLoading() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="list-item-loading">
       <div className={styles.item}>
         <div className={styles.rank}>
           <Shimmer height={16} width={12} />

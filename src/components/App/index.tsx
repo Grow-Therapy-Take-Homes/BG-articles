@@ -13,7 +13,7 @@ export default function App() {
   const date = useAppStore((s) => s.date);
   const limit = useAppStore((s) => s.limit);
 
-  const { data, isLoading, error, refetch } = useQuery(["top_views", date], () => {
+  const { data, isLoading, error, refetch } = useQuery(["topViews", date], () => {
     return getTopViews(date);
   });
   const { items, ...pagination } = usePagination(data?.articles, limit);

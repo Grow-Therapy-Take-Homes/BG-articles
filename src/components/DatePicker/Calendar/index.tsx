@@ -3,6 +3,7 @@ import IconChevronRight from "icons/IconChevronRight";
 import IconButton from "@components/IconButton";
 import cn from "@utils/cn";
 import type { UseCalendarResponse } from "@hooks/useCalendar";
+import { yearMonthDay } from "@utils/date";
 import styles from "./styles.module.css";
 
 export type CalendarProps = UseCalendarResponse & {
@@ -53,10 +54,12 @@ export default function Calendar({
         {days.map((day) => (
           <div key={day.getTime()} className={styles.day} onClick={handleSelectDay(day)}>
             <button
+              aria-selected={day.toDateString() === selected.toDateString()}
               className={cn(
                 styles.date,
                 day.toDateString() === selected.toDateString() && styles.date_selected,
               )}
+              data-testid={`calendar-date-${yearMonthDay(day)}`}
               disabled={(from && day < from) || (to && day > to)}
               type="button"
             >

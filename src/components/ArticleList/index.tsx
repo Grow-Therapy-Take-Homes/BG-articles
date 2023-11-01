@@ -25,11 +25,11 @@ export default function ArticleList({
 }: ArticleListProps) {
   if (loading) return <ArticleListLoading limit={limit} />;
 
-  if (error) return <ArticleListError error={error} onRetry={onRetry} />;
+  if (error || !articles?.length) return <ArticleListError error={error} onRetry={onRetry} />;
 
   return (
     <ul className={styles.list}>
-      {articles?.map((item) => (
+      {articles.map((item) => (
         <li key={item.article} className={styles.item}>
           <ListItem article={item} />
         </li>

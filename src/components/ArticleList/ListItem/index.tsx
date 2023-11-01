@@ -19,8 +19,13 @@ export default function ListItem({ article }: ListItemProps) {
   const articleTitle = formatArticleTitle(article.article);
 
   return (
-    <div className={styles.container}>
-      <button className={styles.item} type="button" onClick={handleToggleDetails}>
+    <div className={styles.container} data-testid="article-list-item">
+      <button
+        className={styles.item}
+        data-testid={`item-bttn-${article.article}`}
+        type="button"
+        onClick={handleToggleDetails}
+      >
         <div className={styles.rank}>{article.rank}.</div>
         <div className={styles.title}>{articleTitle}</div>
         <div className={styles.views}>{article.views.toLocaleString()} views</div>
