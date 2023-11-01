@@ -2,15 +2,10 @@ import { useMemo, useState } from "react";
 
 const weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-export type UseCalendarDay = {
-  disabled: boolean;
-  date: Date;
-};
-
 export type UseCalendarResponse = {
   selected: Date;
   date: Date;
-  days: UseCalendarDay[];
+  days: Date[];
   weekdays: string[];
   previous: () => void;
   next: () => void;
@@ -44,26 +39,24 @@ export default function useCalendar(defaultDate: Date): UseCalendarResponse {
     const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
     const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-    const prevMonth = Array.from({ length: firstDayOfMonth.getDay() }, (_, i) => ({
-      disabled: true,
-      date: new Date(
-        lastDayOfPrevMonth.getFullYear(),
-        lastDayOfPrevMonth.getMonth(),
-        lastDayOfPrevMonth.getDate() - i,
-      ),
-    })).reverse();
+    const prevMonth = Array.from(
+      { length: firstDayOfMonth.getDay() },
+      (_, i) =>
+        new Date(
+          lastDayOfPrevMonth.getFullYear(),
+          lastDayOfPrevMonth.getMonth(),
+          lastDayOfPrevMonth.getDate() - i,
+        ),
+    ).reverse();
 
-    const currentMonth = Array.from({ length: lastDayOfMonth.getDate() }, (_, i) => ({
-      disabled: false,
-      date: new Date(date.getFullYear(), date.getMonth(), i + 1),
-    }));
+    const currentMonth = Array.from(
+      { length: lastDayOfMonth.getDate() },
+      (_, i) => new Date(date.getFullYear(), date.getMonth(), i + 1),
+    );
 
     const nextMonth = Array.from(
       { length: 42 - currentMonth.length - prevMonth.length },
-      (_, i) => ({
-        disabled: true,
-        date: new Date(date.getFullYear(), date.getMonth() + 1, i + 1),
-      }),
+      (_, i) => new Date(date.getFullYear(), date.getMonth() + 1, i + 1),
     );
 
     return prevMonth.concat(currentMonth).concat(nextMonth);

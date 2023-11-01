@@ -14,3 +14,13 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.extract_error {
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .extract {
+    padding-left: 0;
+  }
+}

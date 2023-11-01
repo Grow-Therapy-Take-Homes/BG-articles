@@ -30,6 +30,12 @@
   gap: 16px;
 }
 
+.bttn {
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 160px;
+}
+
 @media screen and (max-width: 700px) {
   .actionbar {
     height: initial;
@@ -40,5 +46,9 @@
 
   .divider {
     display: none;
+  }
+
+  .bttn {
+    width: 100%;
   }
 }

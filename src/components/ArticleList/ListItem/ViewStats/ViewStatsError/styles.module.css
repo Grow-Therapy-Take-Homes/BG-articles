@@ -40,13 +40,13 @@
 }
 
 .views {
-  color: #e68a00;
-  text-align: right;
+  text-align: center;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  padding: 16px;
 }
 
 .divider {
@@ -57,8 +57,16 @@
   margin-left: -8px;
 }
 
+.bttn {
+  align-self: end;
+}
+
 @media screen and (max-width: 700px) {
   .container {
     padding-left: 0;
+  }
+
+  .bttn {
+    width: 100%;
   }
 }

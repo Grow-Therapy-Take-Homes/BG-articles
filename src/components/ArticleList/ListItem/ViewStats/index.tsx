@@ -4,6 +4,7 @@ import { useAppStore } from "store";
 import styles from "./styles.module.css";
 import ViewStatsLoading from "./ViewStatsLoading";
 import { formatArticleTimestamp } from "./helpers";
+import ViewStatsError from "./ViewStatsError";
 
 type ViewStatsProps = {
   articleName: string;
@@ -11,12 +12,16 @@ type ViewStatsProps = {
 
 export default function ViewStats({ articleName }: ViewStatsProps) {
   const date = useAppStore((s) => s.date);
-  const { data, isLoading } = useQuery(["views", articleName], () => {
+  const { data, isLoading, isError } = useQuery(["views", articleName], () => {
     return getMonthlyViews(articleName, date);
   });
 
   if (isLoading) {
     return <ViewStatsLoading />;
+  }
+
+  if (isError) {
+    return <ViewStatsError />;
   }
 
   return (

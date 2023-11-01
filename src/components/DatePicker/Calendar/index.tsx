@@ -51,16 +51,16 @@ export default function Calendar({
         ))}
 
         {days.map((day) => (
-          <div key={day.date.getTime()} className={styles.day} onClick={handleSelectDay(day.date)}>
+          <div key={day.getTime()} className={styles.day} onClick={handleSelectDay(day)}>
             <button
               className={cn(
                 styles.date,
-                day.date.toDateString() === selected.toDateString() && styles.date_selected,
+                day.toDateString() === selected.toDateString() && styles.date_selected,
               )}
-              disabled={day.disabled || (from && day.date < from) || (to && day.date > to)}
+              disabled={(from && day < from) || (to && day > to)}
               type="button"
             >
-              {day.date.getDate()}
+              {day.getDate()}
             </button>
           </div>
         ))}

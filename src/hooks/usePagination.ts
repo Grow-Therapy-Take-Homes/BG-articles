@@ -6,11 +6,11 @@ export default function usePagination<T>(entries?: T[], limit = 100) {
   const [previousLimit, setPreviousLimit] = useState(limit);
   const total = entries?.length || 0;
   const startIndex = (page - 1) * limit;
-  const endIndex = Math.min(startIndex + limit, items?.length || 0);
+  const endIndex = Math.min(startIndex + limit, total);
   const visibleItems = items?.slice(startIndex, endIndex) || [];
-  const hasNext = endIndex < (items?.length || 0);
-  const hasPrevious = page > 1;
-  const totalPages = Math.ceil((items?.length || 0) / limit);
+  const hasNext = endIndex < total;
+  const hasPrevious = total && page > 1;
+  const totalPages = Math.ceil(total / limit);
   const lastPage = totalPages > 0 ? totalPages : 1;
 
   const onNext = () => {

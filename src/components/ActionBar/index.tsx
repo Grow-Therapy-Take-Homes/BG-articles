@@ -1,9 +1,9 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
-import SearchButton from "@components/ActionBar/SearchButton";
 import DatePicker from "@components/DatePicker";
 import ResultsPerPagePicker from "@components/ResultsPerPagePicker";
 import { useAppStore } from "store";
+import Button from "@components/Button";
 import styles from "./styles.module.css";
 import Divider from "./Divider";
 
@@ -28,7 +28,9 @@ export default function ActionBar() {
       <Divider />
       <ResultsPerPagePicker selectedValue={limit} onSelect={setLimit} />
 
-      <SearchButton />
+      <Button className={styles.bttn} type="submit">
+        Search
+      </Button>
     </form>
   );
 }

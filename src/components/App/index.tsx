@@ -13,8 +13,14 @@ export default function App() {
   const date = useAppStore((s) => s.date);
   const limit = useAppStore((s) => s.limit);
 
-  const { data, isLoading, error } = useQuery(["top_views", date], () => getTopViews(date));
+  const { data, isLoading, error, refetch } = useQuery(["top_views", date], () => {
+    return getTopViews(date);
+  });
   const { items, ...pagination } = usePagination(data?.articles, limit);
+
+  const handleRetry = () => {
+    refetch();
+  };
 
   return (
     <div className={styles.app}>
@@ -30,6 +36,7 @@ export default function App() {
             error={error}
             limit={pagination.limit}
             loading={isLoading}
+            onRetry={handleRetry}
           />
         </Card>
 
