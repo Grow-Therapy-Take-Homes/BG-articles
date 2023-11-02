@@ -11,11 +11,11 @@ export type AppState = {
  * Data uploads can sometimes take more than 24 hours. This will help ensure that the intial
  * page load includes data for a slightly better experience.
  * */
-const twoDaysAgo = new Date();
-twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
 
 export const useAppStore = create<AppState>()((set) => ({
-  date: twoDaysAgo,
+  date: yesterday,
   setDate(day: Date) {
     set(() => ({ date: day }));
   },

@@ -25,13 +25,13 @@ export default function ViewStats({ articleName }: ViewStatsProps) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid={`article-stats-${articleName}`}>
       <div className={styles.divider} />
       <div className={styles.title}>Top views this month</div>
       {data?.map((item) => (
         <div key={item.timestamp} className={styles.stat}>
           <div className={styles.date}>{formatArticleTimestamp(item.timestamp)}</div>
-          <div className={styles.views}>{item.views} views</div>
+          <div className={styles.views}>{item.views.toLocaleString()} views</div>
         </div>
       ))}
     </div>

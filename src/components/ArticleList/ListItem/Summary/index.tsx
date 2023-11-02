@@ -22,7 +22,7 @@ export default function Summary({ articleName }: SummaryProps) {
   }
 
   return (
-    <p className={styles.extract}>
+    <p className={styles.extract} data-testid="article-summary">
       {data?.extract || data?.description || "This page does not include a summary"}
     </p>
   );
